@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+    <!-- Content -->
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
+                <div>
+                    <h4 class="mb-3">Event List</h4>
+                    <!-- <p class="mb-0">The Party List provides a detailed record of all associated parties, including suppliers, vendors, or<br>
+                        clients, facilitating seamless communication, tracking, and relationship management. </p> -->
+                </div>
+                {% if user.role == 'WH' or user.username == 'admin'%}
+                <a href="page-add-party" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Event</a>
+                {% else %}
+
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="table-responsive rounded mb-3">
+            <table class="data-tables table mb-0 tbl-server-info">
+                <thead class="bg-white text-uppercase">
+                    <tr class="ligth ligth-data">
+                        <th>Party Code</th>
+                        <th>Party Name</th>
+                        <th>Leader Name</th>
+                        <th>Warehouse Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody class="ligth-body">
+                    {% for party in parties %}
+                    <tr>
+                        <td>{{party.party_code}}</td>
+                        <td>{{party.party_name}}</td>
+                        <td>{{party.leader_name}}</td>
+                        <td>{{party.wh_leader}}</td>
+                        <td><div class="badge badge-success">{{party.start_date}}</div></td>
+                        <td><div class="badge badge-warning">{{party.end_date}}</div></td>
+                        {% if user.role == 'WH' or user.username == 'admin'%}
+
+                        <td>
+                            <div class="d-flex align-items-center list-action">
+                                <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
+                                    href="{% url 'page_update_party' party.party_code %}"><i class="ri-pencil-line mr-0"></i></a>
+                                <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add Devices"
+                                    href="{% url 'page_add_order' party.party_code %}"><i class="ri-add-fill"></i></a>
+                                <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
+                                    href="{% url 'page_delete_party' party.party_code %}"><i class="ri-delete-bin-line mr-0"></i></a>
+                                <a class="badge bg-light mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Return Devices"
+                                href="{% url 'page_return_order' party.party_code %}"><i class="ri-exchange-line"></i></a>
+                                <a class="badge bg-dark mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Make Invoice"
+                                href="{% url 'invoice_page' party.party_code %}"><i class="ri-bill-line"></i></a>
+                            </div>
+                        </td>
+                        {% else %}
+                        <td>
+                            <div class="d-flex align-items-center list-action">
+                                <a class="badge bg-dark mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Make Invoice"
+                                href="{% url 'invoice_page' party.party_code %}"><i class="ri-bill-line"></i></a>
+                            </div>
+                        </td>
+                        {% endif %}
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+    <!-- Page end  -->
+</div>
+
+
+{% else %}
+
+<h1>Sorry! You Must Be Logged In To View This Page...</h1>
+<a href="{% url 'login' %}" class="btn border">LOG IN</a>
+{% endif %}
+{% endblock content %}
+    <!-- End Content -->

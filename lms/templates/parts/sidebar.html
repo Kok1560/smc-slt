@@ -1,0 +1,340 @@
+    {% load static %}
+
+    <!-- Sidebar -->
+    <div class="iq-sidebar  sidebar-default ">
+        <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
+            <a href="{% url 'page_list_party' %}" class="header-logo">
+                <img src="{% static 'images/layouts/logo.jpg' %}" class="img-fluid rounded-normal light-logo" alt="logo"><h5 class="logo-title light-logo ml-3" style="color: #262626;">SMC/SLT</h5>
+            </a>
+            <div class="iq-menu-bt-sidebar ml-0">
+                <i class="las la-bars wrapper-menu"></i>
+            </div>
+        </div>
+        <div class="data-scrollbar" data-scroll="1">
+            <nav class="iq-sidebar-menu">
+                <ul id="iq-sidebar-toggle" class="iq-menu">
+                {% if user.username == 'admin' %}
+
+                    <li class=" ">
+                        <a href="#category" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                            <svg class="svg-icon" id="warehouse-icon" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 10L12 3L21 10V20H3V10Z"></path>
+                                <path d="M9 21V12H15V21"></path>
+                                <rect x="5" y="14" width="4" height="4" stroke="currentColor"></rect>
+                                <rect x="15" y="14" width="4" height="4" stroke="currentColor"></rect>
+                              </svg>
+                            <span class="ml-4">Inventory</span>
+                            <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                            </svg>
+                        </a>
+                        <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <li class="">
+                                        <a href="page-list-inventory">
+                                            <i class="las la-minus"></i><span>List Inventory</span>
+                                        </a>
+                                </li>
+                                <li class="">
+                                        <a href="page-add-inventory">
+                                            <i class="las la-minus"></i><span>Add Inventory</span>
+                                        </a>
+                                </li>
+                        </ul>
+                    </li>
+                    <li class=" ">
+                        <a href="#product" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                            <svg class="svg-icon" id="maintenance-icon" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 2L16 8"></path>
+                                <path d="M16 2L22 8"></path>
+                                <circle cx="12" cy="14" r="6"></circle>
+                                <path d="M12 10V14L15 16"></path>
+                              </svg>
+                            <span class="ml-4">Products</span>
+                            <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                            </svg>
+                        </a>
+                        <ul id="product" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <li class="">
+                                <a href="page-list-product">
+                                    <i class="las la-minus"></i><span>List Product</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="page-add-product">
+                                    <i class="las la-minus"></i><span>Add Product</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="page-list-package">
+                                    <i class="las la-minus"></i><span>List Package</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="page-add-package">
+                                    <i class="las la-minus"></i><span>Add Package</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class=" ">
+                        <a href="#sale" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                            <svg class="svg-icon" id="event-icon" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                                <path d="M8 2V6"></path>
+                                <path d="M16 2V6"></path>
+                                <path d="M3 10H21"></path>
+                                <rect x="7" y="14" width="4" height="4"></rect>
+                              </svg>
+                            <span class="ml-4">Event</span>
+                            <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                            </svg>
+                        </a>
+                        <ul id="sale" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <li class="">
+                                        <a href="page-list-party">
+                                            <i class="las la-minus"></i><span>List Event</span>
+                                        </a>
+                                </li>
+                                <li class="">
+                                        <a href="page-add-party">
+                                            <i class="las la-minus"></i><span>Add Event</span>
+                                        </a>
+                                </li>
+                        </ul>
+                    </li>
+                    <li class=" ">
+                        <a href="#purchase" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                            <img src="{% static 'images/Vector.svg' %}" alt="Maintenance Icon">
+                            <span class="ml-4">Maintenance</span>
+                            <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                            </svg>
+                        </a>
+                        <ul id="purchase" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <li class="">
+                                        <a href="page-list-maint">
+                                            <i class="las la-minus"></i><span>List Maintenance</span>
+                                        </a>
+                                </li>
+                                <li class="">
+                                        <a href="page-add-maint">
+                                            <i class="las la-minus"></i><span>Add Maintenance</span>
+                                        </a>
+                                </li>
+                        </ul>
+                    </li>
+                    <li class=" ">
+                        <a href="#return" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                            <svg class="svg-icon" id="reports-icon" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                                <path d="M7 3H17C18.1 3 19 3.9 19 5V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V5C5 3.9 5.9 3 7 3Z"></path>
+                              
+                                <path d="M9 7H15"></path>
+                              
+                                <path d="M9 11H15"></path>
+                              
+                                <path d="M9 15H13"></path>
+                              
+                              </svg>
+                            <span class="ml-4">Reports</span>
+                            <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                            </svg>
+                        </a>
+                        <ul id="return" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <li class="">
+                                        <a href="page-product-report">
+                                            <i class="las la-minus"></i><span>Products Report</span>
+                                        </a>
+                                </li>
+                                <li class="">
+                                        <a href="page-inventory-report">
+                                            <i class="las la-minus"></i><span>Inventory Report</span>
+                                        </a>
+                                </li>
+                        </ul>
+                    </li>
+                    <li class=" ">
+                        <a href="#people" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                            <svg class="svg-icon" id="team-icon" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="8" cy="13" r="3"></circle>
+                                <circle cx="16" cy="13" r="3"></circle>
+                                <circle cx="12" cy="7" r="3"></circle>
+                                <path d="M2 21C3 18 5.5 16 8 16"></path>
+                                <path d="M22 21C21 18 18.5 16 16 16"></path>
+                                <path d="M12 10V21"></path>
+                              </svg>
+                            <span class="ml-4">SMC-SLT Team</span>
+                            <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                            </svg>
+                        </a>
+                        <ul id="people" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <li class="">
+                                        <a href="page-list-users">
+                                            <i class="las la-minus"></i><span>Users</span>
+                                        </a>
+                                </li>
+                                <li class="">
+                                        <a href="{% url 'register_user' %}">
+                                            <i class="las la-minus"></i><span>Add Users</span>
+                                        </a>
+                                </li>
+                        </ul>
+                    </li>
+            </nav>
+{% elif user.role == 'User' %}
+
+<li class=" ">
+    <a href="#sale" class="collapsed" data-toggle="collapse" aria-expanded="false">
+        <svg class="svg-icon" id="p-dash4" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+        </svg>
+        <span class="ml-4">Event</span>
+        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+        </svg>
+    </a>
+    <ul id="sale" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+            <li class="">
+                    <a href="page-list-party">
+                        <i class="las la-minus"></i><span>List Event</span>
+                    </a>
+            </li>
+    </ul>
+</li>
+
+<li class=" ">
+    <a href="#purchase" class="collapsed" data-toggle="collapse" aria-expanded="false">
+        <svg class="svg-icon" id="p-dash5" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+            <line x1="1" y1="10" x2="23" y2="10"></line>
+        </svg>
+        <span class="ml-4">Maintenance</span>
+        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+        </svg>
+    </a>
+    <ul id="purchase" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+            <li class="">
+                    <a href="page-list-maint">
+                        <i class="las la-minus"></i><span>List Maintenance</span>
+                    </a>
+            </li>
+    </ul>
+</li>
+
+<li class=" ">
+    <a href="#return" class="collapsed" data-toggle="collapse" aria-expanded="false">
+        <svg class="svg-icon" id="p-dash6" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line>
+        </svg>
+        <span class="ml-4">Reports</span>
+        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+        </svg>
+    </a>
+    <ul id="return" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+            <li class="">
+                    <a href="page-product-report">
+                        <i class="las la-minus"></i><span>Products Report</span>
+                    </a>
+            </li>
+            <li class="">
+                    <a href="page-inventory-report">
+                        <i class="las la-minus"></i><span>Inventory Report</span>
+                    </a>
+            </li>
+    </ul>
+</li>
+
+{% else %}
+
+<li class=" ">
+    <a href="#sale" class="collapsed" data-toggle="collapse" aria-expanded="false">
+        <svg class="svg-icon" id="p-dash4" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+        </svg>
+        <span class="ml-4">Event</span>
+        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+        </svg>
+    </a>
+    <ul id="sale" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+            <li class="">
+                    <a href="page-list-party">
+                        <i class="las la-minus"></i><span>List Event</span>
+                    </a>
+            </li>
+            <li class="">
+                    <a href="page-add-party">
+                        <i class="las la-minus"></i><span>Add Event</span>
+                    </a>
+            </li>
+    </ul>
+</li>
+<li class=" ">
+    <a href="#purchase" class="collapsed" data-toggle="collapse" aria-expanded="false">
+        <svg class="svg-icon" id="p-dash5" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+            <line x1="1" y1="10" x2="23" y2="10"></line>
+        </svg>
+        <span class="ml-4">Maintenance</span>
+        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+        </svg>
+    </a>
+    <ul id="purchase" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+            <li class="">
+                    <a href="page-list-maint">
+                        <i class="las la-minus"></i><span>List Maintenance</span>
+                    </a>
+            </li>
+            <li class="">
+                    <a href="page-add-maint">
+                        <i class="las la-minus"></i><span>Add Maintenance</span>
+                    </a>
+            </li>
+    </ul>
+</li>
+<li class=" ">
+    <a href="#return" class="collapsed" data-toggle="collapse" aria-expanded="false">
+        <svg class="svg-icon" id="p-dash6" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line>
+        </svg>
+        <span class="ml-4">Reports</span>
+        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+        </svg>
+    </a>
+    <ul id="return" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+            <li class="">
+                    <a href="page-product-report">
+                        <i class="las la-minus"></i><span>Products Report</span>
+                    </a>
+            </li>
+            <li class="">
+                    <a href="page-inventory-report">
+                        <i class="las la-minus"></i><span>Inventory Report</span>
+                    </a>
+            </li>
+    </ul>
+</li>
+
+{% endif %}
+
+            <div id="sidebar-bottom" class="position-relative sidebar-bottom">
+                <div class="card border-none">
+                    <div class="card-body p-0">
+                        <div class="sidebarbottom-content">
+                            <div class="image"><img src="{% static 'images/layouts/sidebar_logo.png' %}" class="img-fluid" alt="side-bkg"></div>
+                            <h6 class="mt-4 px-4 body-title">SMC/SLT Website</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-3"></div>
+        </div>
+        </div>
+  <!-- End Sidebar -->
+

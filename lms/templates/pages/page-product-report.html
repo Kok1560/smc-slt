@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+    <!-- Content -->
+{% block content %}
+{% if user.is_authenticated %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
+                <div>
+                    <h4 class="mb-3">Products Report</h4>
+                    <!-- <p class="mb-0">The Products Report offers a detailed analysis of product performance, inventory levels, and sales<br>trends, enabling informed decision-making and effective inventory management.</p> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="table-responsive rounded mb-3">
+            <table class="data-tables table mb-0 tbl-server-info">
+                <thead class="bg-white text-uppercase">
+                    <tr class="ligth ligth-data">
+                        <!-- <th>Image</th> -->
+                        <th>ID</th>
+                        <th>Product ID</th>
+                        <th>Category</th>
+                        <th>Product Name</th>
+                        <th>Amount of Parties</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody class="ligth-body">
+                    {% for product in productsreport %}
+                    <tr>
+                        <!-- <td>{{product.image}}</td> -->
+                        <td>{{product.id}}</td>
+                        <td>{{product.product_id}}</td>
+                        <td>{{product.category}}</td>
+                        <td>{{product.product_name}}</td>
+                        <td>{{product.amount_of_parties}}</td>
+                        <td>
+                            <div class="d-flex align-items-center list-action">
+                                <a class="badge badge-black mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Search for Device"
+                                    href="{% url 'search_for_device' product.product_id %}"><i class="ri-eye-line mr-0"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+    <!-- Page end  -->
+</div>
+{% else %}
+
+<h1>Sorry! You Must Be Logged In To View This Page...</h1>
+<a href="{% url 'login' %}" class="btn border">LOG IN</a>
+{% endif %}
+{% endblock content %}
+    <!-- End Content -->

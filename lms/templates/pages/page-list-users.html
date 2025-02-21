@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+{% if user.is_authenticated %}
+    {% if user.username == 'admin' %}
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
+                    <div>
+                        <h4 class="mb-3">User List</h4>
+                        <!-- <p class="mb-0">A dashboard provides you an overview of user list with access to the most important data,<br>
+                         functions and controls. </p> -->
+                    </div>
+                    <a href="{% url 'register_user' %}" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add User</a>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="table-responsive rounded mb-3">
+                <table class="data-tables table mb-0 tbl-server-info">
+                    <thead class="bg-white text-uppercase">
+                        <tr class="ligth ligth-data">
+                            <th>UserName</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Active</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="ligth-body">
+                        {% for user in form %}
+                        <tr>
+                            <td>{{user.username}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.role}}</td>
+                            <td>
+                                {% if user.is_active %}
+                                    <span class="badge badge-success">Active</span>
+                                {% else %}
+                                    <span class="badge badge-danger">Inactive</span>
+                                {% endif %}
+                            </td>
+                            
+                            <td>
+                                <div class="d-flex align-items-center list-action">
+                                    <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Role"
+                                    href="{% url 'update_user_role' user.id %}"><i class="ri-pencil-line mr-0"></i></a>
+                                </div>
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        <!-- Page end  -->
+    </div>
+
+    {% else %}
+    <div class="text-center">
+        <img src="{% static 'images/error/access_denied.jpg' %}" 
+             class="img-fluid" 
+             alt="Access Denied" 
+             style="max-width: 100%; height: auto;">
+    
+    </div>
+    {% endif %}
+
+{% else %}
+
+<h1>Sorry! You Must Be Logged In To View This Page...</h1>
+<div style="display: flex; justify-content: center; align-items: center;">
+    <a href="{% url 'login' %}" class="btn border">LOG IN</a>
+  </div>
+{% endif %}
+
+{% endblock content %}

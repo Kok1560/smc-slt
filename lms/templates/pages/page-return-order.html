@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+    <!-- Content -->
+{% block content %}
+<div class="container-fluid add-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Return Order</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Party Code *</label>
+                                    {{returnform.party_code}}
+                                </div>
+                            </div>  
+                            <div class="col-md-6">                      
+                                <div class="form-group">
+                                    <label>Product *</label>
+                                    {{returnform.product_id}}
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">                      
+                                <div class="form-group">
+                                    {{returnform.state}}
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>    
+                        </div>                            
+                        <button type="submit" class="btn btn-primary mr-2">Return Device</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="table-responsive rounded mb-3">
+            <table class="data-table table mb-0 tbl-server-info">
+                <thead class="bg-white text-uppercase">
+                    <tr class="ligth ligth-data">
+                        <th>Party Products</th>
+                        <!-- <th>Return Devices</th> -->
+                    </tr>
+                </thead>
+                <tbody class="ligth-body">
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{order.product_id}}</td>
+                        <!-- <td>
+                            <div class="d-flex align-items-center list-action">
+                                <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
+                                    href="{% url 'delete_product_order' order.id %}"><i class="ri-delete-bin-line mr-0"></i></a>
+                            </div>
+                        </td> -->
+                    </tr>
+                    
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+
+
+        <div class="col-lg-6">
+            <div class="table-responsive rounded mb-3">
+            <table class="data-table table mb-0 tbl-server-info">
+                <thead class="bg-white text-uppercase">
+                    <tr class="ligth ligth-data">
+                        <th>Return Products</th>
+                        <!-- <th>Action</th> -->
+                    </tr>
+                </thead>
+                <tbody class="ligth-body">
+                    {% for order in returnorders %}
+                    <tr>
+                        <td>{{order.product_id}}</td>
+                        <!-- <td>
+                            <div class="d-flex align-items-center list-action">
+                                <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
+                                    href="{% url 'delete_product_order' order.id %}"><i class="ri-delete-bin-line mr-0"></i></a>
+                            </div>
+                        </td> -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+    <!-- Page end  -->
+</div>
+{% endblock content %}
+    <!-- End Content -->

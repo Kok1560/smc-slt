@@ -1,0 +1,7 @@
+Django==5.1.4
+mysql-connector==2.2.9
+pillow==10.4.0
+PyMySQL==1.1.0
+six==1.17.0
+virtualenv==20.28.1
+mysqlclient==2.2.7

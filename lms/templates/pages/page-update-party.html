@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+    <!-- Content -->
+{% block content %}
+<div class="container-fluid add-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Update Party</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">                                  
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Party Name *</label>
+                                    {{partyform.party_name}}
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <label>Leader Name *</label>
+                                <div class="form-group">
+                                    {{partyform.leader_name}}
+                                </div> 
+                            </div>  
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Warehouse Leader *</label>
+                                    {{partyform.wh_leader}}
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>   
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Start Date *</label>
+                                    {{partyform.start_date}}
+                                </div>
+                            </div> 
+                        </div>                            
+                        <button type="submit" class="btn btn-primary mr-2">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page end  -->
+</div>
+{% endblock content %}
+    <!-- End Content -->
